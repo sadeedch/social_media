@@ -11,7 +11,7 @@
 |
 */
 
-
+// route for home page showing all posts
 Route::get('/', function(){
     $sql = "select * from post order by post_id DESC";
     $posts = DB::select($sql);
@@ -19,18 +19,25 @@ Route::get('/', function(){
     return view('items.home')->with('posts', $posts); 
 });
 
+// route for recent post page
 Route::get('recent_post', function(){
-    $sql = "select * FROM post WHERE post_date > (SELECT DATETIME('now', '-7 day'))";
+    $sql = "select * FROM post WHERE post_date > (SELECT DATETIME('now', '-7 day')) order by post_id DESC";
     $posts = DB::select($sql);
-    
     return view('items.recent_post')->with('posts', $posts); 
+});
+
+// route for list of unique users
+Route::get('unique_users', function(){
+    $sql = "select DISTINCT username from post ";
+    $posts = DB::select($sql);
+    return view('items.unique_users')->with('posts', $posts); 
 });
 
 
 Route::get('item_detail/{post_id}', function($id){
     $post = get_item($id);
-    $comment = get_comment($id);
-    return view('items.item_detail')->with('post', $post);
+    $comments = get_comment($id);
+    return view('items.item_detail')->with('post', $post)->with('comments', $comments);
 });
 // get item function
 function get_item($id){
@@ -42,11 +49,12 @@ function get_item($id){
     $post = $posts[0];
     return $post;
 }
+
+// get comments 
 function get_comment($id){
-    $sql = "select * from comment";    
-    $comments = DB::select($sql);
-    $comment = $comments[0];
-    return $comment;
+    $sql = "select * from post, comment where post.post_id = comment.post_id and comment.post_id = ? ";    
+    $comments = DB::select($sql, array($id));
+    return $comments;
 }
 
 

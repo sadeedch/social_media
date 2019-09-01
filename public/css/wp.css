@@ -62,3 +62,11 @@ a:hover { text-decoration: underline; }
     padding: 10px;
     background-color: beige;
 }
+
+
+#comment {
+    border-color: goldenrod;
+    border-style: solid;
+    padding: 10px;
+    background-color: coral;
+}

@@ -18,17 +18,27 @@
     </div>   
 
 
-    <div class="col-md-8" >
+  <div class="col-md-8" >
       <form method="post" action="{{url("")}}">
         <div align = center style="background-color: #008080;">
           <label>User Name:</label><br><input type = "text" name ="comment_username"><br><br>
           <label>Comment:</label><br> <textarea type="text" rows="5" cols="70" name ="comment_msg"></textarea><br>
           <input type ="submit" value="Add new Comment">
         </div>
-      </form>
-      <div>
-        <h2 align = "center">Place holder for comments</h2>
-      </div>
+      </form><br> <br>
+      <h3 align = center>Comments:</h3>
+      
+        @if ($comments)
+          @foreach ($comments as $comment)
+            <div style="background-color:lightblue">
+              <p> <b>User Name: </b>{{$comment->comment_username}}</p>
+              <p> <b>Comment: </b> {{$comment->comment_msg}}</p>
+            </div>
+          @endforeach
+        @else
+          <h4>There are no comments for this post</h4> 
+        @endif
+        
 
-    </div>
+  </div>
 @endsection
