@@ -25,11 +25,18 @@
             <a href = "{{url("item_detail/$post->post_id")}}" > <b>Post Title:</b> {{$post->title}}</a><br>
             <p><b>Message :</b> {{$post->msg}}</p>
             <p><b>Date:</b> {{$post->post_date}}</p>
+
+            
+
           </div><br> 
         @endforeach
       @else
         No item Found
       @endif
+
+      
+   
+
     </div>
  
 @endsection

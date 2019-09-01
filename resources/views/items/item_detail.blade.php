@@ -19,7 +19,8 @@
 
 
   <div class="col-md-8" >
-      <form method="post" action="{{url("")}}">
+      <form method="post" action="{{url("add_comment_action")}}">
+      {{csrf_field()}}
         <div align = center style="background-color: #008080;">
           <label>User Name:</label><br><input type = "text" name ="comment_username"><br><br>
           <label>Comment:</label><br> <textarea type="text" rows="5" cols="70" name ="comment_msg"></textarea><br>

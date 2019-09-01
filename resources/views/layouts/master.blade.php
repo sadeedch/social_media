@@ -19,7 +19,7 @@
     <div class="col-md-6" > <a href ="{{url("/")}}"> Home </a></div>
     <div class="col-md-2" > <a href ="{{url("unique_users")}}"> Unique Users </a></div>
     <div class="col-md-2" > <a href ="{{url("recent_post")}}"> Most Recent </a> </div>
-    <div class="col-md-2" > <a href =""> Documentation </a> </div>
+    <div class="col-md-2" > <a href ="{{url("doc")}}"> Documentation </a> </div>
     </div>
   </div>
   <div class="container">

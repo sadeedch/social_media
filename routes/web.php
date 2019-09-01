@@ -15,8 +15,7 @@
 Route::get('/', function(){
     $sql = "select * from post order by post_id DESC";
     $posts = DB::select($sql);
-    
-    return view('items.home')->with('posts', $posts); 
+    return view('items.home')->with('posts', $posts);
 });
 
 // route for recent post page
@@ -33,6 +32,9 @@ Route::get('unique_users', function(){
     return view('items.unique_users')->with('posts', $posts); 
 });
 
+Route::get('doc', function(){
+    return view('items.doc');
+});
 
 Route::get('item_detail/{post_id}', function($id){
     $post = get_item($id);
@@ -59,9 +61,9 @@ function get_comment($id){
 
 
 // add item route, action and function
-Route::get('add_item', function(){
-    return view('items.add_item');
-});
+//Route::get('add_item', function(){
+//    return view('items.add_item');
+//});
 Route::post('add_item_action', function (){
     $username = request('username');
     $title = request('title');
@@ -77,6 +79,27 @@ Route::post('add_item_action', function (){
 function add_item($username,$title, $msg){
     $sql = "insert into post (username, title, msg) values (?,?,?)";
     DB::insert($sql, array($username,$title, $msg));
+    $id = DB::getPdo()->lastInsertId();     //DB::getPdo()->lastInsertId()to fetch last inserted item's id
+    return ($id);
+}
+
+
+// add comment
+Route::post('add_comment_action', function (){
+    $username = request('comment_username');
+    $msg = request('comment_msg');
+    $newid = add_comment($username,$msg);
+    
+    if ($id){
+        return redirect (url("/"));     // this will redirect to item details. url() for absolute path 
+    } else {
+        die ("All fields are required to create a new post");
+    }
+});
+
+function add_comment($username,$msg){
+    $sql = "insert into comment (comment_username,  comment_msg) values (?,?)";
+    DB::insert($sql, array($username, $msg));
     $id = DB::getPdo()->lastInsertId();     //DB::getPdo()->lastInsertId()to fetch last inserted item's id
     return ($id);
 }
