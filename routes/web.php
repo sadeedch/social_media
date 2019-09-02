@@ -15,8 +15,10 @@
 Route::get('/', function(){
     $sql = "select * from post order by post_id DESC";
     $posts = DB::select($sql);
-    $post_number = DB::table('post')->count();
-    return view('posts.home')->with('posts', $posts)->with('post_number', $post_number);
+
+    
+    $comments_number = DB::table('comment')->count('comment.post_id');
+    return view('posts.home')->with('posts', $posts)->with('comments_number', $comments_number);
 });
 
 // route for recent post page
@@ -143,16 +145,25 @@ Route::get('delete_post/{post_id}', function($id){
 Route::post('delete_post_action', function (){
     $id = request('id');
     $post = delete_post($id);
+
 });
 function delete_post($id) {
     $sql = "delete from post where post_id = ?";
     DB::delete($sql, array($id));
 } 
 
+Route::get('delete_comment/{comment_id}', function($id){
+    $post = delete_comment($id);
+    return view('posts.delete_comment')->with('post', $post); 
+    
+});
+
+
 Route::post('delete_comment_action', function (){
     $id = request('id');
-    dd($id);
     $post = delete_comment($id);
+
+
 });
 function delete_comment($id) {
     $sql = "delete from comment where comment_id = ?";

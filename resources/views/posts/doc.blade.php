@@ -10,12 +10,12 @@
 
 <div>
 <h1>Documentation</h1>
-  <font size="12" color = #B22222><strong>Problem Statement</strong></font> 
+  <h2><strong>Problem Statement</strong></h2>
   <p>Building the foundation for a social media application. Implementation of the ability for 
   posts to be added to the timeline, posts to be edited and deleted, and for comments to be 
-  added to the post.  </p> 
+  added to the post.  </p><br> 
     
-  <font size="12" color = #B22222><strong>Completed Tasks</strong></font> 
+    <h2><strong>Completed Tasks</strong></h2>
     <li>All pages have navigation menu at the top. </li>
     <li>The home page displays all the posts. </li>
     <li>Next to each post, there is a number indicating how many comments are there for that post.</li>
@@ -26,17 +26,22 @@
     <li>User can add comments to a post. The form to add comments is displayed on the comments page. A comment must include username and message. </li>
     <li>User can delete comments.</li>
     <li>There is a unique users page which list all the users only once who have made a post. Clicking on the username brings up the posts made by that user.</li>
-    <li>There is a most recent page which shows the posts made in the last 7 days. </li>
+    <li>There is a most recent page which shows the posts made in the last 7 days. </li><br>
   
-    <font size="12" color = #B22222><strong>Technical Requirements fulfilled</strong></font> 
+    <h2><strong>Technical Requirements fulfilled</strong></h2> 
     <li>This social media application is implemented using Laravel.</li>
     <li>Database is implemented via Raw SQL and executed through Laravel’s DB class.</li>
     <li>An SQL file is used to create tables and insert initial data. </li>
     <li>All inputs are validated.</li>
     <li>HTML and SQL sanitisation is implemented.</li>
-    <li>Template inheritance is being used for this application. </li>
+    <li>Template inheritance is being used for this application. </li><br>
+
+    <h2><strong>Entity Relationship Diagram</strong></h2>
+    <img src="{{asset('er_diagram.jpg')}}" width=1000 height =500 alt="Entity Relation Diagram">
 
 </div>
+
+
 
 
 @endsection

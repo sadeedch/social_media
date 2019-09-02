@@ -43,6 +43,7 @@ a:hover { text-decoration: underline; }
 .antispam { display:none;}
 
 #navbar {
+    
     color: white;
     font-family: arial;
     border-color: white;
@@ -92,6 +93,24 @@ a:hover { text-decoration: underline; }
   .button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
   .button5 {background-color: #555555;} /* Black */
 
-  a {
-    color:white;
-  }
+a { 
+    font-size: 17px;  
+    color: white;
+    }
+
+ .form-submit-button {
+
+        background: #0066A2;   
+        color: white;       
+        border-style: outset;     
+      border-color: #0066A2;
+        
+        height: 50px;
+        
+        width: 100px;
+        
+        font: bold 15px arial, sans-serif;
+        
+        text-shadow:none;
+        
+        }

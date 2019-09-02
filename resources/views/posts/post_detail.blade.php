@@ -31,20 +31,10 @@
       
         @if ($comments)
           @foreach ($comments as $comment)
-            <div style="background-color: #3D9970">
+            <div style="background-color: #3D9970; text-align: center">
               <p> <b>User Name: </b>{{$comment->comment_username}}</p>
               <p> <b>Comment: </b> {{$comment->comment_msg}}</p>
-                <form method="post" action="{{url("delete_comment_action/$comment->comment_id")}}">
-                <input type ="submit" value="Delete Comment" style = "background-color: white; /* Green */
-                 
-                  color: black;
-                  padding: 15px 32px;
-                  text-align: center;
-                  
-                  display: inline-block;
-                  font-size: 10px;
-                  margin: 4px 2px;">
-                </form>
+              <p><a href = "{{url("delete_comment/$comment->comment_id")}}"> Delete Post</a></p> 
             </div><br>
           @endforeach
         @else
