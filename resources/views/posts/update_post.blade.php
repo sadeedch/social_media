@@ -6,7 +6,7 @@
 
 @section('content')
 
-  <form method="post" action= "{{url("update_item_action")}}">
+  <form method="post" action= "{{url("update_post_action")}}">
     {{csrf_field()}}
     <input type="hidden" name="post_id" value="{{$post->post_id}}">
 

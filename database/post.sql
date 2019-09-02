@@ -9,7 +9,7 @@ create table post (
 insert into post (username, title, msg) values ("Sadeed",  "1st post", "This is my first post");
 insert into post (username, title, msg) values ("Ahmad",  "2nd post", "This is my first post");
 insert into post (username, title, msg) values ("John",  "3rd post", "This is my first post");
-insert into post (username, title, msg) values ("John",  "3rd post", "This is my first post", "2018-09-01");
+insert into post (username, title, msg, post_date) values ("John",  "3rd post", "This is my first post", "2018-09-01");
 
 drop table if exists comment;
 create table comment (    
@@ -20,6 +20,7 @@ create table comment (
     CONSTRAINT fk_post
         FOREIGN KEY (post_id)
     REFERENCES post(post_id)
+    ON DELETE CASCADE
 ); 
 
 insert into comment (comment_username, comment_msg, post_id) values ("Sadeed",  "first comment", "2");

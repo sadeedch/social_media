@@ -8,7 +8,7 @@
 
 
     <div class="col-md-4"> 
-      <form method="post" action="{{url("add_item_action")}}"> 
+      <form method="post" action="{{url("add_post_action")}}"> 
         {{csrf_field()}}
         <label>User Name:</label><br><input type = "text" name ="username"><br>
         <label>Title:</label><br><input type = "text" name ="title"><br>
@@ -23,7 +23,7 @@
           <div id = "post">
             <img src="{{asset('css/user.jpg')}}" width=100 height =100 alt="simsons user">
             <p><b>User Name </b>:{{$post->username}}</p>
-            <a href = "{{url("item_detail/$post->post_id")}}" > <b>Post Title:</b> {{$post->title}}</a><br>
+            <a href = "{{url("post_detail/$post->post_id")}}" > <b>Post Title:</b> {{$post->title}}</a><br>
             <p><b>Message :</b> {{$post->msg}}</p>
             <p><b>Date:</b> {{$post->post_date}}</p>
 
@@ -32,7 +32,7 @@
           </div><br> 
         @endforeach
       @else
-        No item Found
+        No Post Found
       @endif
 
       
