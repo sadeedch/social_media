@@ -17,6 +17,7 @@
       </form>
     </div>
     <div class="col-md-8" > 
+    {{$post_number}}</p>
       @if ($posts)   
         @foreach ($posts as $post)
           <div id = "post">

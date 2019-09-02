@@ -1,7 +1,7 @@
  @extends('layouts.master')
 
 @section('title')
-  Home Page
+  Recent Posts
 @endsection
 
 @section('content')

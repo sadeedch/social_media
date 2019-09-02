@@ -15,7 +15,8 @@
 Route::get('/', function(){
     $sql = "select * from post order by post_id DESC";
     $posts = DB::select($sql);
-    return view('items.home')->with('posts', $posts);
+    $post_number = DB::table('post')->count();
+    return view('items.home')->with('posts', $posts)->with('post_number', $post_number);
 });
 
 // route for recent post page
@@ -31,7 +32,7 @@ Route::get('unique_users', function(){
     $posts = DB::select($sql);
     return view('items.unique_users')->with('posts', $posts); 
 });
-
+// route for documentation page
 Route::get('doc', function(){
     return view('items.doc');
 });
@@ -52,7 +53,7 @@ function get_item($id){
     return $post;
 }
 
-// get comments 
+// get comments function
 function get_comment($id){
     $sql = "select * from post, comment where post.post_id = comment.post_id and comment.post_id = ? ";    
     $comments = DB::select($sql, array($id));
@@ -69,12 +70,15 @@ Route::post('add_item_action', function (){
     $title = request('title');
     $msg = request('msg');
     
-    $id = add_item($username,$title, $msg);
-    if ($id){
+    $tna = add_item($username,$title, $msg);
+    
+    if ($tna){
         return redirect (url("/"));     // this will redirect to item details. url() for absolute path 
     } else {
         die ("All fields are required to create a new post");
     }
+    return $tna;
+    
 });
 function add_item($username,$title, $msg){
     $sql = "insert into post (username, title, msg) values (?,?,?)";
@@ -88,20 +92,19 @@ function add_item($username,$title, $msg){
 Route::post('add_comment_action', function (){
     $username = request('comment_username');
     $msg = request('comment_msg');
-    $newid = add_comment($username,$msg);
+    $post_id = request('post_id');
+    $new_comment = add_comment($username,$msg, $post_id);
+    dd($post_id);
+
     
-    if ($id){
-        return redirect (url("/"));     // this will redirect to item details. url() for absolute path 
-    } else {
-        die ("All fields are required to create a new post");
-    }
+    
 });
 
-function add_comment($username,$msg){
-    $sql = "insert into comment (comment_username,  comment_msg) values (?,?)";
-    DB::insert($sql, array($username, $msg));
-    $id = DB::getPdo()->lastInsertId();     //DB::getPdo()->lastInsertId()to fetch last inserted item's id
-    return ($id);
+function add_comment($username,$msg, $post_id){
+    $sql = "insert into comment (comment_username,  comment_msg, post_id) values (?,?,?)";
+    DB::insert($sql, array($username, $msg, $post_id));
+    //$id = DB::getPdo()->lastInsertId();     //DB::getPdo()->lastInsertId()to fetch last inserted item's id
+    //return ($id);
 }
 
 

@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="col-md-4">
-      <img src="{{asset('css/user.jpg')}}" width=100 height =100 alt="simsons user">
+      <img src="{{asset('css/user.jpg')}}" width=100 height =100 alt="simpsons user">
       <h1>Title : {{$post->title}}</h1>
       <p> <b>User Name:</b> {{$post->username}}</p>
       <p> <b>Message:</b> {{$post->msg}}</p>

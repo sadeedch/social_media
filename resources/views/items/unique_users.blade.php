@@ -1,7 +1,7 @@
  @extends('layouts.master')
 
 @section('title')
-  Home Page
+  Unique Users
 @endsection
 
 @section('content')
