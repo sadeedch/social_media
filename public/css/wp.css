@@ -25,10 +25,14 @@ table.bordered th { border: solid; border-width: thin; border-color: black; }
 
 address { margin-left: 0in; font-style: italic; }       
 
-a:link { text-decoration: none; }
-a:visited { text-decoration: none; }
-a:active { text-decoration: none; }
-a:hover { text-decoration: underline; }
+a:link { font-size: 17px;  
+    color: white; }
+a:visited { font-size: 17px;  
+    color: white; }
+a:active { font-size: 17px;  
+    color: white; }
+a:hover { font-size: 17px;  
+    color: white;}
 
 .alert { font-weight: bold; font-style: italic; color: red; }
 
@@ -49,7 +53,7 @@ a:hover { text-decoration: underline; }
     border-color: white;
     
     padding: 15px;
-    background-color: #3C5A99;
+    background-color: rgb(182, 154, 31);
 }
 
 #content {
@@ -93,10 +97,7 @@ a:hover { text-decoration: underline; }
   .button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
   .button5 {background-color: #555555;} /* Black */
 
-a { 
-    font-size: 17px;  
-    color: white;
-    }
+
 
  .form-submit-button {
 

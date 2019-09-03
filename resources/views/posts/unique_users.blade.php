@@ -11,7 +11,7 @@
     <div align = center class="col-md-12" > 
       <h3> List of uniqure users</h3>
         @foreach ($posts as $post)
-        <a href = "" > {{$post->username}}</a><br> 
+        <a href = "{{url("unique_users_action")}}" > {{$post->username}}</a><br> 
         @endforeach  
     </div>
     

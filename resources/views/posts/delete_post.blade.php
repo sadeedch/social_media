@@ -6,12 +6,9 @@
 
 @section('content')
 
-<form method="post" action= "{{url("delete_item_action")}}">
-{{csrf_field()}}
-<h3> Post has been deleted succefully !!! </h3> <br>
 
+<h4 class = "alert"> Post has been deleted succefully !!! </h4> <br>
 
-</form>
 
 
 @endsection

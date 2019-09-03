@@ -1,7 +1,7 @@
  @extends('layouts.master')
 
 @section('title')
-  Home Page
+  Social Media Application
 @endsection
 
 @section('content')

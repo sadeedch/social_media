@@ -6,14 +6,15 @@
 
 @section('content')
     <div class="col-md-4">
-      <img src="{{asset('css/user.jpg')}}" width=100 height =100 alt="simpsons user">
+      <img src="{{asset('user.jpg')}}" width=100 height =100 alt="simpsons user">
       <h1>Title : {{$post->title}}</h1>
       <p> <b>User Name:</b> {{$post->username}}</p>
       <p> <b>Message:</b> {{$post->msg}}</p>
       <p> <b>Date:</b> {{$post->post_date}}</p>
-
+      
+      <p><a href = "{{url("update_post/$post->post_id")}}" > Update Post</a></p>
       <p><a href = "{{url("delete_post/$post->post_id")}}"> Delete Post</a></p>   
-      <a href = "{{url("update_post/$post->post_id")}}" > Update Post</a><br>
+      
       
     </div>   
 

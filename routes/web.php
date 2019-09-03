@@ -34,6 +34,14 @@ Route::get('unique_users', function(){
     $posts = DB::select($sql);
     return view('posts.unique_users')->with('posts', $posts); 
 });
+
+
+Route::get('unique_users_action/', function(){
+    $sql = "select * from post where username = 'Sadeed'";
+    $posts = DB::select($sql);
+    dd($posts);
+    return view('posts.unique_users_action')->with('posts', $posts); 
+});
 // route for documentation page
 Route::get('doc', function(){
     return view('posts.doc');
@@ -111,8 +119,7 @@ Route::post('add_comment_action/{post_id}', function ($id){
 function add_comment($username,$msg, $post_id){
     $sql = "insert into comment (comment_username,  comment_msg, post_id) values (?,?,?)";
     DB::insert($sql, array($username, $msg, $post_id));
-    //$id = DB::getPdo()->lastInsertId();     //DB::getPdo()->lastInsertId()to fetch last inserted item's id
-    //return ($id);
+    
 }
 
 
@@ -136,17 +143,12 @@ function update_post($username, $title, $msg, $id) {
 
 
 
-// delete item route, action and function
+// delete item route and function
 Route::get('delete_post/{post_id}', function($id){
     $post = delete_post($id);
     return view('posts.delete_post')->with('post', $post); 
 });
 
-Route::post('delete_post_action', function (){
-    $id = request('id');
-    $post = delete_post($id);
-
-});
 function delete_post($id) {
     $sql = "delete from post where post_id = ?";
     DB::delete($sql, array($id));

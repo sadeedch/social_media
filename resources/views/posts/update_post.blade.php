@@ -17,9 +17,9 @@
     <input type = "text" name ="title" value = "{{$post->title}}"><br>
 
     <label>Message:</label><br> 
-    <textarea type="text" name ="msg" rows="10" cols="35" value = "{{$post->post_date}}">
+    <textarea type="text" name ="msg" rows="10" cols="35" value = "{{$post->msg}}">
     </textarea><br>
 
-    <input type="submit" value="Update item">
+    <input type="submit" value="Update Post">
   </form>
 @endsection
